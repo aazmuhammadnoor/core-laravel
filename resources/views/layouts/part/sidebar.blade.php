@@ -19,9 +19,13 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="#!"><i class="fa fa-sign-out"></i> Keluar</a></li>
+          <li id="master-user"><a href="{{ url('backend/user') }}"><i class="fa fa-user"></i> User</a></li>
+          <li id="master-menu"><a href="{{ url('backend/menu') }}"><i class="fa fa-list"></i> Menu</a></li>
         </ul>
       </li>
+      <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();">
+          <i class="fa fa-sign-out"></i> Keluar</a></li>
     </ul>
   </section>
 </aside>

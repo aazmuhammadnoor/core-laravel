@@ -58,4 +58,25 @@ class LoginController extends Controller
     {
         return 'username';
     }
+
+    protected function validateLogin(Request $request)
+    {
+        $username = $this->username();
+        $rules = [
+                    $username => 'required|string|exists:users'
+                ];
+        $messages = [
+                    $username.'.exists' => 'Username not Exists'
+                ];
+        $this->validate($request,$rules,$messages);
+    }
+
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        return redirect('/backend');
+    }
 }

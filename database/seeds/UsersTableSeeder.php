@@ -13,10 +13,13 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('users')->truncate();
         DB::table('users')->insert([
-            'name' => 'admin',
+            'username' => 'admin',
             'email' => 'admin@admin.com',
             'password' => bcrypt('12345678'),
+            'created_at' => date('Y-m-d h:i:s'),
+            'updated_at' => date('Y-m-d h:i:s'),
         ]);
     }
 }

@@ -1,6 +1,6 @@
 <header class="main-header">
 	<!-- Logo -->
-    <a href="{{ url('/') }}" class="logo">
+    <a href="{{ url('/backend') }}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini" id="profile_mini">{{ config('app.initial') }}</span>
       <!-- logo for regular state and mobile devices -->
@@ -101,6 +101,9 @@
 
                 <p>
                   {{ Auth::user()->username }}
+                  </br>
+                  <small>({{ Auth::user()->thisGroup->name }})</small>
+                </p>
                 </p>
               </li>
               <!-- Menu Body -->
