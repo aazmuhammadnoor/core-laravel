@@ -10,7 +10,7 @@
 
 * First install default laravel with command ```composer install```
 * Run ```composer dump-autoload```
-* Setting your database, domain, etc. on your ```.env``` file 
+* Setting your database, APP_URL, etc. on your ```.env``` file 
 * Run ```php artisan key:generate```
 * RUn ```php artisan storage:link```
 * Run bash file ```clear.sh``` on your command or double click ```clear.bat``` if you use windows OS
