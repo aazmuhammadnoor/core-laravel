@@ -110,7 +110,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="<?php echo url('/') ?>" class="btn btn-default btn-flat">Ubah Password</a>
+                  <a href="<?php echo url('backend/password') ?>" class="btn btn-default btn-flat">Ubah Password</a>
                 </div>
                 <div class="pull-right">
                     <a href="{{ route('logout') }}" class="btn btn-danger btn-flat"

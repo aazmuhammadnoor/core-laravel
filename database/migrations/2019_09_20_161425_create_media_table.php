@@ -11,6 +11,7 @@ class CreateMediaTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('media');
         Schema::create('media', function (Blueprint $table) {
             $table->increments('id');
             $table->morphs('model');

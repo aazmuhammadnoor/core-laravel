@@ -13,13 +13,15 @@ class Menu extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('menu');
         Schema::create('menu', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id',11);
             $table->integer('parent')->nullable();
             $table->string('name');
             $table->string('url');
             $table->string('icon');
-            $table->nullableTimestamps();
+            $table->string('sort');
+            $table->timestamps();
         });
     }
 

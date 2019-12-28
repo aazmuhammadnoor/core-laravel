@@ -24,8 +24,46 @@ class BackendController extends Controller
     						'url' => url('/')
     					]
     				  );
+        //dashboard
+        $dashboard = [
+                        [
+                            'title' => 'Dashboard 1',
+                            'icon' => 'fa fa-building-o',
+                            'color' => 'bg-red',
+                            'total' => 90,
+                            'url' => url()->current()
+                        ],
+                        [
+                            'title' => 'Dashboard 2',
+                            'icon' => 'fa fa-building-o',
+                            'color' => 'bg-yellow',
+                            'total' => 100,
+                            'url' => url()->current()
+                        ],
+                        [
+                            'title' => 'Dashboard 3',
+                            'icon' => 'fa fa-clipboard',
+                            'color' => 'bg-green',
+                            'total' => 66,
+                            'url' => url()->current()
+                        ],
+                        [
+                            'title' => 'Dashboard 4',
+                            'icon' => 'fa fa-newspaper-o',
+                            'color' => 'bg-aqua',
+                            'total' => 570,
+                            'url' => url()->current()
+                        ],
+                        [
+                            'title' => 'Dashboard 5',
+                            'icon' => 'fa fa-image',
+                            'color' => 'bg-purple',
+                            'total' => 12.000,
+                            'url' => url()->current()
+                        ],
+                    ];
 
-        return view('backend.home',compact('title','sub_title','breadcrumb'));
+        return view('backend.home',compact('title','sub_title','breadcrumb','dashboard'));
     }
 
     /**
@@ -50,7 +88,7 @@ class BackendController extends Controller
     					]
     				  );
 
-        return view('backend.form',compact('title','sub_title','breadcrumb'));
+        return view('backend.template.form_template',compact('title','sub_title','breadcrumb'));
     }
 
     /**
@@ -75,7 +113,7 @@ class BackendController extends Controller
     					]
     				  );
 
-        return view('backend.document_editor',compact('title','sub_title','breadcrumb'));
+        return view('backend.template.document_editor',compact('title','sub_title','breadcrumb'));
     }
 
     /**
@@ -139,6 +177,6 @@ class BackendController extends Controller
         }
         $data = $data->paginate($r->limit);
 
-        return view('backend.table',compact('title','sub_title','breadcrumb','data','r'));
+        return view('backend.template.table',compact('title','sub_title','breadcrumb','data','r'));
     }
 }
