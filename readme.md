@@ -1,5 +1,11 @@
 ## laravel core with admin-lte backend and Twitter Bootstrap 4 frontend
 
+### Feature
+
+* Dynamic group users
+* Dynamic permission
+* Dynamic menu backend
+
 ### Instruction
 
 * First install default laravel with command ```composer install```
