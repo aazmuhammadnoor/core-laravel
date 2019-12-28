@@ -12,4 +12,12 @@ class Menu extends Model
 		'name',
 		'url'
 	];
+
+	/**
+     * parentnya
+     */
+    public function thisParent()
+    {
+        return $this->belongsTo('App\Models\Menu', 'parent', 'id');
+    }
 }

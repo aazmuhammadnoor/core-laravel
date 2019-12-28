@@ -143,6 +143,7 @@
   <script src="{{ asset('plugins/datatables.net/js/buttons.print.min.js') }}"></script>
   <script src="{{ asset('scripts/table/lists.js') }}"></script>
 	<script type="text/javascript">
-    
+      $("#template").addClass('active');
+      $("#table").addClass('active');
 	</script>
 @endpush

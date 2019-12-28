@@ -1,0 +1,2 @@
+<a href="{{ url("backend/permission/add") }}" class="btn btn-primary pull-right m-5"><i class="fa fa-plus"></i> New</a>
+<a href="{{ url()->current() }}" class="btn btn-success pull-right m-5"><i class="fa fa-refresh"></i> Refresh Page</a>

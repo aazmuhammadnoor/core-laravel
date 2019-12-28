@@ -66,6 +66,8 @@
 @push('scripts')
 	<script src="{{ asset('plugins/ckeditor5/ckeditor.js') }}"></script>
 	<script>
+	    $("#template").addClass('active');
+	    $("#document-editor").addClass('active');
 		DecoupledEditor
 		.create( document.querySelector( '.edit' ), {
 			// toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]

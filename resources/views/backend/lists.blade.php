@@ -32,13 +32,7 @@
           </div>
         </div>
         <div class="box-body">
-          {!! Form::open(['url' => url()->current(),'class' => 'form-horizontal', 'method' => 'post']) !!}
-              {!! Form::newText([3,6],'Menu Name','name',$r->name,['']) !!}
-              {!! Form::newText([3,6],'URL','Url',$r->url,['']) !!}
-              {!! Form::newOption([3,6],'Parent','parent',$r->parent,['required'],$parents) !!}
-              {!! Form::newOption([3,6],'Limit','limit',$r->limit,[''],limit_page()) !!}
-              {!! Form::newSubmit([3,6],'Submit','Cancel') !!}
-          {!! Form::close() !!}
+          @include("backend.$folder.filter")
         </div>
       </div>
     </div>
@@ -54,18 +48,14 @@
           </div>
         </div>
         <div class="box-body">
-          {!! Form::newCheckbox([8,4],'Menu Name','name','',true,['required','data-form'=>'table_row']) !!}
-          {!! Form::newCheckbox([8,4],'Url','url','',true,['required','data-form'=>'table_row']) !!}
-          {!! Form::newCheckbox([8,4],'Parent','parent','',true,['required','data-form'=>'table_row']) !!}
-          {!! Form::newCheckbox([8,4],'Icon','icon','',true,['required','data-form'=>'table_row']) !!}
-          {!! Form::newCheckbox([8,4],'Action','action','',false,['required','data-form'=>'table_row']) !!}
+          @include("backend.$folder.show")
         </div>
       </div>
     </div>
 
     {{-- button --}}
     <div class="col-md-3">
-      <a href="{{ url("backend/menu/add") }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> New</a>
+      @include("backend.$folder.button")
     </div>
 
   </div>
@@ -89,38 +79,8 @@
             </div>
           @endif
 
-          <table id="datatable" class="table table-bordered table-striped">
-              <thead>
-                <tr>
-                  <th class="no">No</th>
-                  <th class="name">Name</th>
-                  <th class="url">URL</th>
-                  <th class="parent">Parent</th>
-                  <th class="icon">Icon</th>
-                  <th class="action">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                @php 
-                  $no = ($data->currentPage()-1)*$data->perPage() 
-                @endphp
+          @include("backend.$folder.table")
 
-                @foreach($data as $row)
-                  @php $no ++ @endphp
-                  <tr>
-                    <td class="no">{{ $no }}</td>
-                    <td class="name">{{ $row->name }}</td>
-                    <td class="url">{{ $row->url }}</td>
-                    <td class="parent">{{ $row->parent }}</td>
-                    <td class="icon">{{ $row->icon }}</td>
-                    <td class="action">
-                      <a href="{{ route('backend.menu.edit',[$row->id]) }}" class="btn btn-sm btn-warning" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
-                      <a href="#!" class="btn btn-sm btn-danger" data-toggle="tooltip" title="Delete"><i class="fa fa-trash"></i></a>
-                    </td>
-                  </tr>
-                @endforeach
-              </tbody>
-          </table>
           <div class="text-center">
             {{ $data->appends($r->all())->links() }}
           </div>
@@ -140,8 +100,5 @@
   <script src="{{ asset('plugins/datatables.net/js/buttons.html5.min.js') }}"></script>
   <script src="{{ asset('plugins/datatables.net/js/buttons.print.min.js') }}"></script>
   <script src="{{ asset('scripts/table/lists.js') }}"></script>
-  <script type="text/javascript">
-    $("#master").addClass('active');
-    $("#master-menu").addClass('active');
-  </script>
+  @include("backend.$folder.script_form")
 @endpush

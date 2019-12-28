@@ -57,3 +57,21 @@ $(document).on("change", 'input[data-form="table_row"]',function(e){
 	table_data();
 	show();
 })
+
+// delete record
+$(document).on("click","#btn-delete",function(e){
+  let action = $(this).data('action');
+  let name = $(this).data('name');
+  $.confirm({
+      title: 'Hapus',
+      content: 'Ingin menghapus '+name,
+      buttons: {
+          Ya: function () {
+              window.location.href = action;
+          },
+          Batal: function () {
+              $.alert('Dibatalkan');
+          }
+      }
+  });
+})

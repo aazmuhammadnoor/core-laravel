@@ -13,8 +13,9 @@ class FakeTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('fake_table');
         Schema::create('fake_table', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id',11);
             $table->string('name');
             $table->string('email');
             $table->string('address');

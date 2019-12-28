@@ -51,7 +51,7 @@
 
     @stack('css')
 </head>
-<body class="hold-transition skin-purple sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
         @include('layouts.part.navigation')
         @include('layouts.part.sidebar')

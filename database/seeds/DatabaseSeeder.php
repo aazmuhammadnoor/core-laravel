@@ -11,9 +11,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(
-        	UsersTableSeeder::class,
+        $this->call([
+            GroupSeeder::class,
+            MenuSeeder::class,
+            PermissionSeeder::class,
+            UsersTableSeeder::class,
+            GroupMenuSeeder::class,
+            GroupPermissionSeeder::class,
             FakeTableSeeder::class
-        );
+        ]);
     }
 }
