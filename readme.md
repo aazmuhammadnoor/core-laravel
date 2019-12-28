@@ -20,5 +20,4 @@
 
 ### Login instruction
 
-* Login to backend with login link from frontend
 * Use ```admin``` for username and ```12345678``` for passsword
