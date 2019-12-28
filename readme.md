@@ -16,7 +16,7 @@
 * Run bash file ```clear.sh``` on your command or double click ```clear.bat``` if you use windows OS
 * Run migrate with ```php artisan migrate```
 * Run seeder with ```php artisan db:seed```
-* Your backend website is ready to development
+* Your backend website is ready for development
 
 ### Login instruction
 
