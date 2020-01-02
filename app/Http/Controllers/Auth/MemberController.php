@@ -27,7 +27,7 @@ class MemberController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/has-login-page';
 
     /**
      * Login username to be used by the controller.
