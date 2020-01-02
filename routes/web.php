@@ -15,11 +15,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::get('/login', 'Auth\MemberController@showLoginForm')->name('login');
+Route::post('/login', 'Auth\MemberController@login');
+Route::get('/logout', 'Auth\MemberController@logout');
+Route::post('/logout', 'Auth\MemberController@logout')->name('logout');
+Route::get('/forgot-password', 'Auth\MemberForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('/forgot-password', 'Auth\MemberForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('/reset-password/{token}', 'Auth\MemberResetPasswordController@showResetForm')->name('password.reset');
+Route::post('/reset-password', 'Auth\MemberResetPasswordController@reset');
+Route::get('/register', 'Auth\MemberRegisterController@showRegistrationForm')->name('register');
+Route::post('/register', 'Auth\MemberRegisterController@register')->name('register');
+
+//Auth::routes();
 
 Route::group([ 'prefix' => 'backend'], function(){
 	Route::get('/login', 'Auth\LoginController@showLoginForm')->name('backend.login');
 	Route::post('/login', 'Auth\LoginController@login');
+	Route::post('/logout', 'Auth\LoginController@logout')->name('backend.logout');
+	Route::get('/logout', 'Auth\LoginController@logout');
 	Route::group(['middleware' => 'auth'], function(){
 		Route::get('/', 'Backend\BackendController@index')->name('backend.home');
 		Route::get('/form', 'Backend\BackendController@form')->name('backend.form');

@@ -20,7 +20,7 @@
 	if(!function_exists("access")){
 		function access($permission_name)
 		{
-			$group = Auth::user()->thisGroup->id;
+			$group = Auth::guard('admin')->user()->thisGroup->id;
         	$permisson = \App\Models\Permission::where('name',$permission_name)->first();
         	$groupPermission = \App\Models\GroupPermission::where('group',$group)
         													->where('permission',$permisson->id)
@@ -42,7 +42,7 @@
 	if(!function_exists("createMenu")){
 		function createMenu()
 		{
-			$group = Auth::user()->thisGroup->id;
+			$group = Auth::guard('admin')->user()->thisGroup->id;
         	showMenu($group);
 		}
 	}

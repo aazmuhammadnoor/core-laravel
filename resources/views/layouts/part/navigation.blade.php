@@ -100,9 +100,9 @@
               <li class="user-header">
 
                 <p>
-                  {{ Auth::user()->username }}
+                  {{ Auth::guard('admin')->user()->username }}
                   </br>
-                  <small>({{ Auth::user()->thisGroup->name }})</small>
+                  <small>({{ Auth::guard('admin')->user()->thisGroup->name }})</small>
                 </p>
                 </p>
               </li>
@@ -113,13 +113,13 @@
                   <a href="<?php echo url('backend/password') ?>" class="btn btn-default btn-flat">Ubah Password</a>
                 </div>
                 <div class="pull-right">
-                    <a href="{{ route('logout') }}" class="btn btn-danger btn-flat"
+                    <a href="{{ route('backend.logout') }}" class="btn btn-danger btn-flat"
 	                    onclick="event.preventDefault();
 	                             document.getElementById('logout-form').submit();">
 	                    Logout
 	                </a>
 
-	                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+	                <form id="logout-form" action="{{ route('backend.logout') }}" method="POST" style="display: none;">
 	                    {{ csrf_field() }}
 	                </form>
                 </div>

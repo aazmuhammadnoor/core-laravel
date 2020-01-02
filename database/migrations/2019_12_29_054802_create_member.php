@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGroup extends Migration
+class CreateMember extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,15 @@ class CreateGroup extends Migration
      */
     public function up()
     {
-        Schema::create('group', function (Blueprint $table) {
+        Schema::dropIfExists('member');
+        Schema::create('member', function (Blueprint $table) {
             $table->increments('id',11);
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('username');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -27,6 +33,6 @@ class CreateGroup extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('group');
+        Schema::dropIfExists('member');
     }
 }

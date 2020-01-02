@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
+class MemberController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/backend';
+    protected $redirectTo = '/';
 
     /**
      * Login username to be used by the controller.
@@ -43,6 +43,7 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+        $this->username = $this->findUsername();
     }
 
     /**
@@ -52,22 +53,22 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view('auth.admin_login');
+        return view('auth.login_member');
     }
 
     public function username()
     {
-        return 'username';
+        return $this->username;
     }
 
     protected function validateLogin(Request $request)
     {
         $username = $this->username();
         $rules = [
-                    $username => 'required|string|exists:users'
+                    $username => 'required|string|exists:member'
                 ];
         $messages = [
-                    $username.'.exists' => 'Username not Exists'
+                    $username.'.exists' => 'Username or Email not Exists'
                 ];
         $this->validate($request,$rules,$messages);
     }
@@ -78,16 +79,28 @@ class LoginController extends Controller
 
         $request->session()->invalidate();
 
-        return redirect('/backend');
+        return redirect('/');
     }
 
-    /**
-     * Get the guard to be used during authentication.
-     *
-     * @return \Illuminate\Contracts\Auth\StatefulGuard
-     */
+    /*protected function credentials(Request $request)
+    {
+        return $request->only($this->username(), 'password');
+    }*/
+
     protected function guard()
     {
-        return Auth::guard('admin');
+        return \Auth::guard('member');
     }
+
+    public function findUsername()
+    {
+        $login = request()->input('username');
+ 
+        $fieldType = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+ 
+        request()->merge([$fieldType => $login]);
+ 
+        return $fieldType;
+    }
+
 }

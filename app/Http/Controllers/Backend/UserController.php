@@ -364,7 +364,7 @@ class UserController extends Controller
             're-password'=>'required|same:password|min:8',
         ]);
 
-        $user = \Auth::user()->id;
+        $user = \Auth::guard('admin')->user()->id;
         $data = User::where("id",$user)->first();
         $check = \Hash::check($r->old_password, $data->password);
 
