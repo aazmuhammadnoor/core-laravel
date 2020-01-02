@@ -14,9 +14,9 @@ class AdminMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = 'users')
+    public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth()->guest()) {
+        if (!Auth::guard('admin')->check()) {
             return redirect()->route('backend.login');
         }
 

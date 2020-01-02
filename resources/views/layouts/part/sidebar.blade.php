@@ -3,7 +3,7 @@
   <section class="sidebar">
     <div class="user-panel">
         <label style="color:white!important" class="badge bg-green">
-          {{ Auth::user()->username }}
+          {{ Auth::guard('admin')->user()->username }}
         </label>
     </div>
     <!-- sidebar menu: : style can be found in sidebar.less -->
