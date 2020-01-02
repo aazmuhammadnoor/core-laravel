@@ -26,7 +26,9 @@ Route::post('/reset-password', 'Auth\MemberResetPasswordController@reset');
 Route::get('/register', 'Auth\MemberRegisterController@showRegistrationForm')->name('register');
 Route::post('/register', 'Auth\MemberRegisterController@register')->name('register');
 
-//Auth::routes();
+Route::group(['middleware' => 'member'], function(){
+	Route::get('/has-login-page', 'HomeController@hasLogin')->name('has.login');
+});
 
 Route::group([ 'prefix' => 'backend'], function(){
 	Route::get('/login', 'Auth\LoginController@showLoginForm')->name('backend.login');
