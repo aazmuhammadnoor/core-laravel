@@ -9,7 +9,7 @@
   <div class="login-box-body">
     <p class="login-box-msg">Login</p>
 
-    <form action="{{ route('login') }}" method="POST">
+    <form action="{{ url('backend/login') }}" method="POST">
       {{ csrf_field() }}
       <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }} has-feedback">
         <input type="text" class="form-control" placeholder="Username" name="username" value="{{ old('username') }}" required>
