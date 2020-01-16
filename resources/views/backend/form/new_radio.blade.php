@@ -3,7 +3,7 @@
   <div class="col-sm-{{$width[1]}}">
   	@foreach($array as $key => $val)
 	    <label>
-	    	{{ Form::radio($name, $value,($key == $value) ? true : '',array_merge(['class' => 'minimal'], (is_array($attributes)) ? $attributes : [])) }}
+	    	{{ Form::radio($name, $key,($key == $value) ? true : '',array_merge(['class' => 'minimal'], (is_array($attributes)) ? $attributes : [])) }}
 	    </label>
 	    <label class="m-r-10">
 	    	{{$val}}
