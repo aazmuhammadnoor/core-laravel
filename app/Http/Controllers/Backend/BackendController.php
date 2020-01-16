@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\FakeTable;
+use App\Models\Pelanggan;
 
 class BackendController extends Controller
 {
@@ -27,11 +28,11 @@ class BackendController extends Controller
         //dashboard
         $dashboard = [
                         [
-                            'title' => 'Dashboard 1',
-                            'icon' => 'fa fa-building-o',
+                            'title' => 'Pelanggan',
+                            'icon' => 'fa fa-users',
                             'color' => 'bg-red',
-                            'total' => 90,
-                            'url' => url()->current()
+                            'total' => Pelanggan::count(),
+                            'url' => route('backend.pelanggan')
                         ],
                         [
                             'title' => 'Dashboard 2',

@@ -78,6 +78,14 @@ Route::group([ 'prefix' => 'backend'], function(){
 		Route::post('/permission/{data}/edit', 'Backend\PermissionController@update')->name('backend.permission.update');
 		Route::get('/permission/{data}/delete', 'Backend\PermissionController@delete')->name('backend.permission.delete');
 
+		Route::get('/pelanggan', 'Backend\PelangganController@table')->name('backend.pelanggan');
+		Route::post('/pelanggan', 'Backend\PelangganController@table')->name('backend.pelanggan.sort');
+		Route::get('/pelanggan/add', 'Backend\PelangganController@add')->name('backend.pelanggan.add');
+		Route::post('/pelanggan/add', 'Backend\PelangganController@insert')->name('backend.pelanggan.insert');
+		Route::get('/pelanggan/{data}/edit', 'Backend\PelangganController@edit')->name('backend.pelanggan.edit');
+		Route::post('/pelanggan/{data}/edit', 'Backend\PelangganController@update')->name('backend.pelanggan.update');
+		Route::get('/pelanggan/{data}/delete', 'Backend\PelangganController@delete')->name('backend.pelanggan.delete');
+
 
 	});
 });
