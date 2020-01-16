@@ -100,5 +100,5 @@
   <script src="{{ asset('plugins/datatables.net/js/buttons.html5.min.js') }}"></script>
   <script src="{{ asset('plugins/datatables.net/js/buttons.print.min.js') }}"></script>
   <script src="{{ asset('scripts/table/lists.js') }}"></script>
-  @include("backend.$folder.script_form")
+  @include("backend.$folder.script_lists")
 @endpush

@@ -79,9 +79,9 @@ class GroupController extends Controller
      * @param $r .... request filter
      */
     protected function filter($data,$r){
-        if($r->has('username')){
-            if($r->username != null && $r->username !=''){
-                $data = $data->where('username','like','%'.$r->username.'%');
+        if($r->has('name')){
+            if($r->name != null && $r->name !=''){
+                $data = $data->where('name','like','%'.$r->name.'%');
             }
         }
         return $data;

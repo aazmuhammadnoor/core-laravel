@@ -40,8 +40,8 @@ class MemberRegisterController extends Controller
         return Validator::make($data, [
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:users,username',
-            'email' => 'required|string|email|max:255|unique:users,email',
+            'username' => 'required|string|max:255|unique:member,username',
+            'email' => 'required|string|email|max:255|unique:member,email',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
