@@ -19,12 +19,17 @@ Route::get('/login', 'Auth\MemberController@showLoginForm')->name('login');
 Route::post('/login', 'Auth\MemberController@login');
 Route::get('/logout', 'Auth\MemberController@logout');
 Route::post('/logout', 'Auth\MemberController@logout')->name('logout');
+
 Route::get('/forgot-password', 'Auth\MemberForgotPasswordController@showLinkRequestForm')->name('password.request');
 Route::post('/forgot-password', 'Auth\MemberForgotPasswordController@sendResetLinkEmail')->name('password.email');
+
 Route::get('/reset-password/{token}', 'Auth\MemberResetPasswordController@showResetForm')->name('password.reset');
 Route::post('/reset-password', 'Auth\MemberResetPasswordController@reset');
+
 Route::get('/register', 'Auth\MemberRegisterController@showRegistrationForm')->name('register');
 Route::post('/register', 'Auth\MemberRegisterController@register')->name('register');
+
+Route::get('/activation/{token}', 'Auth\MemberRegisterController@activation')->name('activation');
 
 Route::group(['middleware' => 'member'], function(){
 	Route::get('/has-login-page', 'HomeController@hasLogin')->name('has.login');

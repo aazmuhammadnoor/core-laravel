@@ -20,6 +20,8 @@ class CreateMember extends Migration
             $table->string('last_name');
             $table->string('username');
             $table->string('email')->unique();
+            $table->string('activation_code');
+            $table->boolean('active')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
